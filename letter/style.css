@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --on: 0;
+  --bg: hsl(calc(200 - (var(--on) * 160)), calc((20 + (var(--on) * 50)) * 1%), calc((20 + (var(--on) * 60)) * 1%));
+  --cord: hsl(0, 0%, calc((60 - (var(--on) * 50)) * 1%));
+  --stroke: hsl(0, 0%, calc((60 - (var(--on) * 50)) * 1%));
+  --shine: hsla(0, 0%, 100%, calc(0.75 - (var(--on) * 0.5)));
+  --cap: hsl(0, 0%, calc((40 + (var(--on) * 30)) * 1%));
+  --filament: hsl(45, calc(var(--on) * 80%), calc((25 + (var(--on) * 75)) * 1%));
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+.message {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Arial, sans-serif;
+  font-size: 48px;
+  color: var(--stroke);
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+.message--off {
+  opacity: calc(1 - var(--on));
+}
+.message--on {
+  opacity: var(--on);
+}
+.desk-link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: var(--on);
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+.desk {
+  width: 600px;
+  height: 300px;
+  background: linear-gradient(to bottom, #8B4513 0%, #8B4513 70%, #654321 70%, #654321 100%);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+.desk-link:hover .desk {
+  transform: scale(1.02);
+}
+.desk::before {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: 50px;
+  width: 80px;
+  height: 80px;
+  background-color: #654321;
+  border-radius: 5px;
+}
+.desk::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  right: 50px;
+  width: 80px;
+  height: 80px;
+  background-color: #654321;
+  border-radius: 5px;
+}
+.toggle-scene {
+  overflow: visible !important;
+  height: 50vmin;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.toggle-scene__cord {
+  stroke: var(--cord);
+  cursor: move;
+}
+.toggle-scene__cord:nth-of-type(1) {
+  display: none;
+}
+.toggle-scene__cord:nth-of-type(2),
+.toggle-scene__cord:nth-of-type(3),
+.toggle-scene__cord:nth-of-type(4),
+.toggle-scene__cord:nth-of-type(5) {
+  display: none;
+}
+.toggle-scene__cord-end {
+  stroke: var(--cord);
+  fill: var(--cord);
+}
+.toggle-scene__dummy-cord {
+  stroke-width: 6;
+  stroke: var(--cord);
+}
+.bulb__filament {
+  stroke: var(--filament);
+}
+.bulb__shine {
+  stroke: var(--shine);
+}
+.bulb__flash {
+  stroke: #f5e0a3;
+  display: none;
+}
+.bulb__bulb {
+  stroke: var(--stroke);
+  fill: hsla(calc(180 - (95 * var(--on))), 80%, 80%, calc(0.1 + (0.4 * var(--on))));
+}
+.bulb__cap {
+  fill: var(--cap);
+}
+.bulb__cap-shine {
+  fill: var(--shine);
+}
+.bulb__cap-outline {
+  stroke: var(--stroke);
+}
+.bulb__face {
+  stroke: var(--stroke);
+}
+.bulb__eye {
+  stroke: var(--stroke);
+}
+.bulb__mouth--happy {
+  stroke: var(--stroke);
+  opacity: calc(1 - var(--on));
+}
+.bulb__mouth--sad {
+  stroke: var(--stroke);
+  opacity: var(--on);
+}
